@@ -173,7 +173,7 @@ input::placeholder {
     font-size: 12px;
   }
 
-#button{
+#button,#downloadBtn{
     background-color:hsl(7, 88%, 67%);
     border-radius: 10px;
     padding: 10px;
@@ -184,7 +184,7 @@ input::placeholder {
     position: relative;
 }
 
-#button:focus{
+#button:focus,#downloadBtn:focus{
     color:#b3aeae; 
     border-color: hsl(249, 97%, 15%);
 }

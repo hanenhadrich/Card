@@ -20,7 +20,7 @@ const button=document.querySelector("#button");
 
 const infoerreur=document.querySelector("#infoerreur");
 
-//function input image first step
+
   inputImage.addEventListener('change', function (event) {
     const file = event.target.files[0];
 
@@ -41,7 +41,7 @@ const infoerreur=document.querySelector("#infoerreur");
     }
 });
 
-//import all informationsto the card
+
 button.addEventListener('click', function(event) {
     event.preventDefault(); 
     event.stopPropagation();
@@ -84,7 +84,94 @@ button.addEventListener('click', function(event) {
           localStorage.setItem('input1', input1);
           localStorage.setItem('input2', input2);
           window.location.href = './card.html'; }
-    // else{// alert("Le champ ne peut pas être vide !");
-    //     
+        
 });
+
+
+
+
+
+
+function redirigerVersPageindex() {
+    window.location.href = "./index.html"; 
+    }
+    const namecard= document.getElementById('namecard');
+    const input = localStorage.getItem('input');
+    const input1 = localStorage.getItem('input1');
+    const input2 = localStorage.getItem('input2');
+    const imageURL = localStorage.getItem('uploadedImage'); 
+    const svgObject = document.getElementById('svgObject');
+   
+    namecard.textContent=input;
+    namecard.style.textTransform = "uppercase";
+
+  svgObject.onload = function() {
+      
+    const svgDoc = svgObject.contentDocument;
+      const text1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text1.setAttribute('x', 200);
+      text1.setAttribute('y', 100);
+      text1.setAttribute('font-size', '24');
+      text1.setAttribute('font-weight', 'bold');
+      text1.setAttribute('font-family', 'Roboto'); 
+      text1.setAttribute('style', 'text-transform: uppercase;');
+      text1.setAttribute('fill', 'black');
+      text1. classList.add("textcard");
+      text1.textContent = `NAME : ${input || 'Aucune donnée'}`;
+
+      svgDoc.documentElement.appendChild(text1);
+
+      const text2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text2.setAttribute('x', 200);
+      text2.setAttribute('y', 140);
+      text2.setAttribute('font-size', '20');
+      text2.setAttribute('font-family', 'Roboto');
+      text2.setAttribute('fill', 'black');
+      text2.textContent = `NUMBER :${input1 || 'Aucune donnée'}`;
+      svgDoc.documentElement.appendChild(text2);
+
+      const text3 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text3.setAttribute('x', 200);
+      text3.setAttribute('y', 180);
+      text3.setAttribute('font-size', '20');
+      text3.setAttribute('font-family', 'Roboto');
+      // newImage.setAttribute('max-width', "300px"); 
+      text3.setAttribute('fill', 'black');
+      text3.textContent = `EMAIL :${input2 || 'Aucune donnée'}`;
+      svgDoc.documentElement.appendChild(text3);
+  
+          
+      const newImage = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      newImage.setAttribute('href', imageURL); 
+      newImage.setAttribute('x', 10);  
+      newImage.setAttribute('y', 40); 
+      newImage.setAttribute('width', 180);  
+      newImage.setAttribute('height', 180); 
+      newImage.setAttribute('style', 'border-radius: 50%;'); 
+      newImage.style.margin = "20px"; 
+      newImage.classList.add("imageDisplay"); 
+      svgDoc.documentElement.appendChild(newImage);
+
+
+      const Image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      Image.setAttribute('href', 'http://127.0.0.1:5501/assets/images/coding.png'); 
+      Image.setAttribute("x", "520");
+      Image.setAttribute("y", "10");
+      Image.setAttribute("width", "50");
+      Image.setAttribute("height", "50"); 
+      svgDoc.documentElement.appendChild(Image);
+     
+      const text4 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text4.setAttribute("x", "545");
+      text4.setAttribute("y", "70");
+      text4.setAttribute("width", "50");
+      text4.setAttribute("height", "50")
+      text4.setAttribute('font-family', 'Roboto');
+      text4.setAttribute('writing-mode', 'vertical-rl');
+      text4.setAttribute('fill', 'black');
+
+      text4.textContent = 'Coding by HANEN RIGUEN';
+      svgDoc.documentElement.appendChild(text4);
+  
+  };
 
